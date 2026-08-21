@@ -1,9 +1,11 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import Hero from "./components/inicio/Hero/hero";
+import Nosotros from "./components/inicio/Nosotros/nosotros";
 
 export default function Home() {
-  return (
-    <>
-    </>
-  );
+    return (
+        <main>
+            <Hero />
+            <Nosotros />
+        </main>
+    );
 }

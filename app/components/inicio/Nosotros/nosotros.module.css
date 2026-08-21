@@ -1,0 +1,145 @@
+/* TEXTO */
+.texto {
+    margin-inline: 1.5rem;
+}
+
+.texto p {
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+/* +100 PROYECTOS COMPLETADOS */
+.proyectos {
+    color: var(--primary-color);
+    display: flex;
+    height: 7vh;
+    justify-content: center;
+    align-items: center;
+    margin-block: 2rem;
+    gap: 0.5rem;
+}
+
+.proyectos div {
+    background-color: var(--primary-color);
+    height: 3rem;
+    width: 7px;
+    border-radius: 3px;
+}
+
+.proyectos p:first-of-type {
+    font-size: 2.8rem;
+    font-weight: 800;
+}
+
+.proyectos p:last-of-type {
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+/* IMÁGENES */
+.visuals {
+    position: relative;
+}
+
+.img_square,
+.img_rectangle {
+    width: 60%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 5px;
+    position: absolute;
+}
+
+.img_square {
+    aspect-ratio: 1 / 1;
+    z-index: 2;
+    left: 15px;
+    border: 7px solid #fff;
+    border-radius: 10px;
+    top: 80px;
+}
+
+.img_rectangle {
+    z-index: 1;
+    right: 15px;
+    top: 160px;
+    aspect-ratio: 3 / 4;
+}
+
+@media (min-width: 576px) {
+
+    .img_square,
+    .img_rectangle {
+        width: 50%;
+    }
+
+    .img_square {
+        left: 30px;
+    }
+
+    .img_rectangle {
+        right: 30px;
+        top: 70px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .nosotros {
+        display: flex;
+        margin-inline: 5rem;
+    }
+
+    .nosotros > div:first-child {
+        display: flex;
+        flex-direction: row-reverse;
+        gap: 2rem;
+        justify-content: center;
+    }
+
+    .texto {
+        margin-inline: 0;
+        width: 40%;
+    }
+
+    .texto h3,
+    .texto h2,
+    .texto p {
+        text-align: start;
+    }
+
+    .visuals {
+        display: flex;
+        flex-direction: row-reverse;
+        gap: 1rem;
+        width: fit-content;
+    }
+
+    .visuals > div:first-child {
+        width: min-content;
+    }
+
+    .proyectos {
+       justify-content: start;
+       width: fit-content;
+    }
+
+    .img_square,
+    .img_rectangle {
+        position: static;
+        width: auto;
+        object-fit: cover;
+    }
+
+    .img_rectangle {
+        height: 65%;
+    }
+
+    .img_square {
+        height: 50%;
+    }
+
+    .img_square {
+        border: 0;
+    }
+
+}

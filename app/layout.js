@@ -1,5 +1,6 @@
 import { Mulish, Reddit_Sans_Condensed } from "next/font/google";
 import "./globals.css";
+import Navbar from "./components/Navbar/Navbar";
 
 const mulish = Mulish({
   variable: "--font-mulish",
@@ -21,7 +22,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${mulish.variable} ${reddit.variable}`}>
-      <body>{children}</body>
+
+      <body>
+        <Navbar />
+
+        {children}
+      </body>
+
     </html>
   );
 }
