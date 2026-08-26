@@ -1,0 +1,57 @@
+[
+    {
+        "titulo": "Encofrado",
+        "descripcion": "Fabricación e instalación de moldajes de madera para dar forma y soporte al hormigón durante su fraguado, asegurando estructuras firmes y bien terminadas.",
+        "icono": "encofrado.svg"
+    },
+    {
+        "titulo": "Tabiquería",
+        "descripcion": "Construcción de muros divisorios interiores no estructurales, con estructura de madera o metal revestida en planchas de yeso-cartón u OSB, usados para separar ambientes dentro de una edificación.",
+        "icono": "tabiqueria.svg"
+    },
+    {
+        "titulo": "Instalaciones sanitarias",
+        "descripcion": "Diseño e instalación de redes de agua potable, alcantarillado y desagües en una construcción.",
+        "icono": "wc.svg"
+    },
+    {
+        "titulo": "Instalaciones eléctricas",
+        "descripcion": "Tendido y conexión del cableado, tableros y puntos de luz/enchufes para dotar de energía eléctrica al inmueble.",
+        "icono": "panel-electrico.svg"
+    },
+    {
+        "titulo": "Estructuras metálicas",
+        "descripcion": "Fabricación y montaje de elementos de acero o metal (vigas, columnas, marcos) que sirven de soporte estructural a una obra.",
+        "icono": "metal.svg"
+    },
+    {
+        "titulo": "Instalación de faena",
+        "descripcion": "Habilitación inicial del terreno con las instalaciones provisorias necesarias para comenzar una obra (bodegas, cierres, baños, oficinas de obra, etc.).",
+        "icono": "contenedor.svg"
+    },
+    {
+        "titulo": "Jornales, orden y aseo",
+        "descripcion": "Mano de obra general dedicada a mantener la limpieza, orden y apoyo logístico dentro de la obra.",
+        "icono": "jornales.svg"
+    },
+    {
+        "titulo": "Excavaciones",
+        "descripcion": "Remoción de tierra o material del terreno para preparar fundaciones, zanjas o nivelar el sitio de construcción.",
+        "icono": "excavador.svg"
+    },
+    {
+        "titulo": "Construcción de viviendas",
+        "descripcion": "Construcción de casas en las clasificaciones A, B, C, D, E, G, H e I, adaptándose a los requerimientos y presupuesto de cada cliente.",
+        "icono": "viviendas.svg"
+    },
+    {
+        "titulo": "Remodelaciones",
+        "descripcion": "Modificación o renovación de espacios existentes, con foco particular en actualizar redes de agua y electricidad.",
+        "icono": "martillo.svg"
+    },
+    {
+        "titulo": "Cobertizos, rejas, portones y protecciones",
+        "descripcion": "Fabricación e instalación de techumbres livianas, cierres perimetrales y elementos de seguridad metálicos para viviendas o terrenos.",
+        "icono": "porton.svg"
+    }
+]

@@ -1,6 +1,7 @@
 import { Mulish, Reddit_Sans_Condensed } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar/Navbar";
+import Footer from "./components/Footer/footer";
 
 const mulish = Mulish({
   variable: "--font-mulish",
@@ -27,6 +28,8 @@ export default function RootLayout({ children }) {
         <Navbar />
 
         {children}
+
+        <Footer />
       </body>
 
     </html>

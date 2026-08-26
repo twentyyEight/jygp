@@ -1,0 +1,110 @@
+.card {
+    background-color: var(--primary-color);
+    color: #fff;
+    width: 80vw;
+    height: 15rem;
+    border-radius: 10px;
+    padding: 1.5rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.portada {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+    opacity: 1;
+    transition: opacity 0.35s ease;
+}
+
+.portada h3 {
+    font-size: 1.8rem;
+    line-height: 1.1;
+}
+
+.descripcion {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    font-size: 1.2rem;
+    text-align: center;
+    transform: translateY(100%);
+    opacity: 0;
+    transition: transform 0.35s ease, opacity 0.35s ease;
+}
+
+.card.open .portada {
+    opacity: 0;
+}
+
+.card.open .descripcion {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.icon {
+    height: 4.5rem;
+    width: fit-content;
+    opacity: 0.6;
+}
+
+.button {
+    display: flex;
+    background-color: #fff;
+    width: fit-content;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding-left: 6px;
+    padding-top: 6px;
+    border-top-left-radius: 5px;
+}
+
+.button span {
+    font-size: 1.2rem;
+}
+
+.button button {
+    background-color: var(--primary-color);
+    border-radius: 5px;
+    padding-block: 5px;
+    padding-inline: 8px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.button :global(.icons) {
+    transform: rotate(45deg);
+    height: fit-content;
+    width: 1rem;
+    display: flex;
+    transition: transform 0.3s ease;
+}
+
+.button :global(.icons):active,
+.button :global(.icons).rotado {
+    transform: rotate(90deg);
+}
+
+.hide {
+    display: none;
+}
+
+@media (min-width: 576px) {
+    .card {
+        width: 350px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .card {
+        width: 300px;
+    }
+}
