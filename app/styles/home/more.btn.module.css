@@ -1,0 +1,23 @@
+.more {
+    background-color: var(--primary-color);
+    color: #fff;
+    font-size: 1.2rem;
+    padding-block: 0.5rem;
+    padding-inline: 1rem;
+    margin-bottom: 2rem;
+    border-radius: 5px;
+    display: flex;
+    margin-inline: auto;
+    margin-top: 3.5rem;
+}
+
+.more:hover,
+.more:active {
+    background-color: var(--secundary-color);
+}
+
+@media (min-width: 992px) {
+    .more {
+        font-size: clamp(1.4rem, 1.5vw, 1.7rem);
+    }
+}
