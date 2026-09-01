@@ -13,6 +13,10 @@ body {
     font-family: var(--font-mulish);
 }
 
+body.overflow-hidden {
+    overflow: hidden;
+}
+
 main {
     display: grid;
     gap: 5rem;
@@ -34,17 +38,8 @@ h2,
     text-align: center;
 }
 
-h2 {
-    font-size: 2rem;
-    line-height: 1.1;
-    margin-top: 6px;
-    margin-bottom: 1rem;
-}
-
 .subtitle {
-    color: var(--primary-color);
     font-weight: 600;
-    font-size: 1.5rem;
 }
 
 ul {
@@ -63,36 +58,4 @@ button {
 
 .icons {
     filter: invert(1);
-}
-
-@media (min-width: 576px) {
-
-    h2 {
-        font-size: 2.2rem;
-    }
-
-    .subtitle {
-        font-size: 1.4rem;
-    }
-}
-
-@media (min-width: 768px) {
-
-    h2 {
-        font-size: 2rem;
-    }
-
-    .subtitle {
-        font-size: 1.2rem;
-    }
-}
-
-@media (min-width: 1280px) {
-    h2 {
-        font-size: 2.5rem;
-    }
-
-    .subtitle {
-        font-size: 1.5rem;
-    }
 }

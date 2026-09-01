@@ -4,11 +4,10 @@
     display: flex;
     justify-content: space-between;
     padding-inline: 1rem;
-    padding-bottom: 0.5rem;
-    padding-top: 0.5rem;
+    padding-block: 0.5rem;
     position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 100;
 }
 
 .logo,
@@ -57,6 +56,15 @@
     font-weight: 600;
 }
 
+.overlay li {
+    transition: transform 0.3s ease;
+}
+
+.overlay li:hover,
+.overlay li:active {
+    transform: translateX(5%);
+}
+
 .logo_overlay {
     width: fit-content;
     height: 9vh;
@@ -72,7 +80,7 @@
 @media (min-width: 768px) {
 
     .nav {
-        padding-inline: 1.5rem;
+        padding-inline: 2rem;
     }
 
     .overlay,
@@ -132,11 +140,11 @@
 
 @media (min-width: 1024px) {
 
-    .nav {
-        padding-inline: 2rem;
+    .logo {
+        height: clamp(3rem, 6.5vh, 4.5rem);
     }
 
     .links {
-        font-size: 1.1rem;
+        font-size: clamp(1.1rem, 1.3vw, 1.4rem);
     }
 }

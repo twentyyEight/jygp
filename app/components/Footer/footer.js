@@ -23,7 +23,7 @@ export default function Footer() {
                             height={50}
                             className='icons'
                         />
-                        <p>Andres #1624, La Florida - Santiago</p>
+                        <p>Andes #1624, La Florida - Santiago</p>
                     </div>
                     <div>
                         <Image

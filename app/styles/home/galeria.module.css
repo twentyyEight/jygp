@@ -1,0 +1,144 @@
+.square,
+.rectangle,
+.section img {
+    height: auto;
+    object-fit: cover;
+}
+
+.section p:global(.subtitle) {
+    color: var(--primary-color);
+    font-size: 1.4rem;
+    margin-bottom: 0.3rem;
+}
+
+.section h2 {
+    font-size: 2.1rem;
+    line-height: 1;
+    margin-inline: 1rem;
+    margin-bottom: 2rem;
+}
+
+.square {
+    aspect-ratio: 1/1;
+}
+
+.rectangle {
+    aspect-ratio: 16/9;
+}
+
+.section {
+    display: grid;
+    margin-inline: 0.5rem;
+}
+
+.section img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.second_row,
+.thrid_row img:not(.mobile) {
+    display: none;
+}
+
+.thrid_row .mobile {
+    object-position: 50% 60%;
+}
+
+@media (min-width: 768px) {
+
+    .section {
+        margin-inline: 1.5rem;
+    }
+
+    .section h2 {
+        margin-bottom: 1rem;
+    }
+
+    .thrid_row img:not(.mobile) {
+        display: block;
+    }
+
+    .second_row .mobile,
+    .thrid_row img:first-child {
+        display: none;
+    }
+
+    .section div:first-of-type,
+    .first_row,
+    .second_row,
+    .thrid_row {
+        display: grid;
+        gap: 0.5rem;
+    }
+
+    .first_row,
+    .thrid_row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .second_row {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 992px) {
+
+    .section {
+        margin-inline: 3rem;
+    }
+
+    .section p:global(.subtitle) {
+        font-size: clamp(1.4rem, 2vw, 2.2rem);
+    }
+
+    .section h2 {
+        font-size: clamp(2.1rem, 3vw, 3.2rem);
+    }
+
+    .section div:first-of-type {
+        margin-top: 0.5rem;
+    }
+
+    .section img {
+        width: 100%;
+        height: auto;
+    }
+
+    .first_row {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .first_row img:last-of-type {
+        display: none;
+    }
+
+    .second_row {
+        grid-template-columns: 1fr 1fr 1.78fr 1fr;
+    }
+
+    .second_row .mobile,
+    .thrid_row img:first-child {
+        display: block;
+    }
+
+    .thrid_row {
+        grid-template-columns: 0.33fr 0.78fr 1fr;
+    }
+
+    .thrid_row img:first-of-type {
+        aspect-ratio: 3/4;
+    }
+
+    .thrid_row img:last-of-type {
+        aspect-ratio: 16/7;
+        object-position: top center;
+    }
+}
+
+@media (min-width: 1280px) {
+
+    .section {
+        margin-inline: 5rem;
+    }
+}

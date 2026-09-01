@@ -1,29 +1,53 @@
+"use client"
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useRef } from 'react'
 
-import heroStyles from "./components/inicio/hero.module.css"
-import nosotrosStyles from "./components/inicio/nosotros.module.css"
-import serviciosStyles from "./components/inicio/servicios.module.css"
-import galeriaStyles from "./components/inicio/galeria.module.css"
-import contactoStyles from "./components/inicio/contacto.module.css"
+import hero from "./styles/home/hero.module.css"
+import nosotros from "./styles/home/nosotros.module.css"
+import servicios from "./styles/home/servicios.module.css"
+import galeria from "./styles/home/galeria.module.css"
+import contacto from "./styles/home/contacto.module.css"
+import moreBtnStyles from "./styles/home/more.btn.module.css"
 
 import ServicioCard from "./components/ServicioCard/ServicioCard";
-import servicios from '@/app/data/servicios.json'
-
-const services = [servicios[8], servicios[9], servicios[2], servicios[3]]
+import services from '@/app/data/servicios.json'
 
 export default function Home() {
+
+    const imgsRef = useRef(null)
+
+    useEffect(() => {
+        function updateSizes() {
+
+            if (imgsRef.current) {
+                const imagenes = imgsRef.current.querySelectorAll('img')
+                const primera = imagenes[0]
+                const segunda = imagenes[1]
+
+                if (primera && segunda) {
+                    const top = primera.getBoundingClientRect().top
+                    const bottom = segunda.getBoundingClientRect().bottom
+                    const altura = bottom - top
+
+                    const primera_width = segunda.getBoundingClientRect().width
+
+                    document.documentElement.style.setProperty('--height-imgs', `${altura}px`)
+                    document.documentElement.style.setProperty('--width-img_square', `${primera_width}px`)
+                }
+            }
+        }
+
+        updateSizes()
+
+        window.addEventListener('resize', updateSizes)
+        return () => window.removeEventListener('resize', updateSizes)
+    }, [])
+
     return (
         <main>
             {/* HERO */}
-            <div className={heroStyles.banner}>
-                <Image
-                    src={'/images/inicio/hero/Banner.png'}
-                    alt="Constructora JYGP"
-                    loading="eager"
-                    width={1254}
-                    height={1254}
-                />
+            <div className={hero.section}>
                 <div>
                     <h1>construyendo confianza, proyecto a proyecto</h1>
                     <p>Sea cual sea su proyecto, grande o pequeño, tenemos los servicios para hacerlo realidad</p>
@@ -32,151 +56,165 @@ export default function Home() {
             </div>
 
             {/* NOSOTROS */}
-            <div id="nosotros" className={nosotrosStyles.nosotros}>
-                <div>
-                    <div className={nosotrosStyles.texto}>
-                        <p className="subtitle">Sobre nosotros</p>
-                        <h2>desde 2021 construyendo confianza y calidad</h2>
-                        <p>JYGP Construcciones es una empresa dedicada a ofrecer soluciones integrales en el rubro de la construcción. Hemos tenido el privilegio de trabajar junto a clientes que han confiado en nosotros, permitiéndonos brindar soluciones eficaces, cumplimiento de plazos y optimización de costos en cada obra. Contamos con experiencia en una amplia gama de servicios respaldados por el compromiso y la dirección de Juan Tapia Levillan, Constructor Civil.</p>
-                    </div>
+            <div id="nosotros" className={nosotros.section}>
 
-                    <div className={nosotrosStyles.visuals}>
-                        <div>
-                            <Image
-                                src={'/images/inicio/nosotros/reparacion-de-techumbre-trabajador-construccion.jpeg'}
-                                alt="Trabajador reparando una techumbre"
-                                width={900}
-                                height={1600}
-                                className={nosotrosStyles.img_square}
-                            />
-                            <div className={nosotrosStyles.proyectos}>
-                                <div></div>
-                                <p>+100</p>
-                                <p>proyectos <br /> completados</p>
-                            </div>
-                        </div>
+                <div className={nosotros.text}>
+                    <p className="subtitle">Sobre nosotros</p>
+                    <h2>desde 2021 construyendo confianza y calidad</h2>
+                    <p>JYGP Construcciones es una empresa dedicada a ofrecer soluciones integrales en el rubro de la construcción. Hemos tenido el privilegio de trabajar junto a clientes que han confiado en nosotros, permitiéndonos brindar soluciones eficaces, cumplimiento de plazos y optimización de costos en cada obra. Contamos con experiencia en una amplia gama de servicios respaldados por el compromiso y la dirección de Juan Tapia Levillan, Constructor Civil.</p>
+                </div>
+
+                <div className={nosotros.visuals}>
+
+                    <div className={nosotros.proyects}>
+                        <p>+100</p>
+                        <p>proyectos <br /> completados</p>
+                    </div>
+                    <div className={nosotros.imgs} ref={imgsRef}>
+                        <Image
+                            src={'/images/inicio/nosotros/reparacion-de-techumbre-trabajador-construccion.jpeg'}
+                            alt="Trabajador reparando una techumbre"
+                            width={900}
+                            height={1600}
+                            className={nosotros.img_square}
+                        />
                         <Image
                             src={'/images/inicio/nosotros/armado-acero-refuerzo-construccion.jpeg'}
                             alt="Armado de acero para refuerzo de construcción"
                             width={720}
                             height={1280}
-                            className={nosotrosStyles.img_rectangle}
+                            className={nosotros.img_rectangle}
                         />
                     </div>
                 </div>
             </div>
 
             {/* SERVICIOS */}
-            <div className={serviciosStyles.servicios}>
+            <div className={servicios.section}>
                 <p className="subtitle">Nuestros servicios</p>
                 <h2>todo lo que necesita, en un solo lugar</h2>
 
-                <div className={serviciosStyles.cards}>
-                    {services.map(service => (
-                        <ServicioCard
-                            key={service.titulo}
-                            titulo={service.titulo}
-                            descripcion={service.descripcion}
-                            icono={service.icono}
-                        />
-                    ))}
+                <div className={servicios.cards}>
+                    {services
+                        .filter((service, index) => [2,3,8,9].includes(index))
+                        .map((service, index) => (
+                            <ServicioCard
+                                key={index}
+                                titulo={service.titulo}
+                                descripcion={service.descripcion}
+                                icono={service.icono}
+                            />
+                        ))}
                 </div>
 
-                <Link href={'/servicios'}>
-                    Revisa más servicios aquí
+                <Link
+                    href={'/servicios'}
+                    className={moreBtnStyles.more}
+                >
+                    Revise más servicios aquí
                 </Link>
             </div>
 
             {/* GALERIA */}
-            {/* <div className={galeriaStyles.galeria}>
-                <div className={galeriaStyles.first_row}>
-                    <Image
-                        src={'/images/inicio/galeria/01-instalacion-faena-obra-construccion.jpeg'}
-                        alt="01 instalacion faena obra construccion"
-                        width={800}
-                        height={450}
-                    />
-                    <Image
-                        src={'/images/inicio/galeria/02-nivelacion-compactacion-terreno-construccion.jpeg'}
-                        alt="02 nivelacion compactacion terreno construccion"
-                        width={800}
-                        height={450}
-                    />
-                    <Image
-                        src={'/images/inicio/galeria/03-reparacion-techumbre-tejas.jpeg'}
-                        alt="03 reparacion techumbre tejas"
-                        width={800}
-                        height={450}
-                    />
+            <div className={galeria.section}>
+
+                <p className="subtitle">Galería de fotos</p>
+                <h2>un vistazo a nuestro trabajo en terreno</h2>
+
+                <div>
+                    <div className={galeria.first_row}>
+                        <Image
+                            src={'/images/inicio/galeria/01-instalacion-faena-obra-construccion.jpeg'}
+                            alt="Instalación de faena en obra de construcción"
+                            width={800}
+                            height={450}
+                        />
+                        <Image
+                            src={'/images/inicio/galeria/02-nivelacion-compactacion-terreno-construccion.jpeg'}
+                            alt="Nivelación y compactación de terreno"
+                            width={800}
+                            height={450}
+                        />
+                        <Image
+                            src={'/images/inicio/galeria/03-reparacion-techumbre-tejas.jpeg'}
+                            alt="Reparación de techumbre con tejas"
+                            width={800}
+                            height={450}
+                        />
+                        <Image
+                            src={'/images/inicio/galeria/06-carpinteria-moldaje-construccion-cubierta.jpeg'}
+                            alt="Carpintería y moldaje de cubierta"
+                            width={800}
+                            height={450}
+                            className={`${galeria.mobile}`}
+                        />
+                    </div>
+
+                    <div className={galeria.second_row}>
+                        <Image
+                            src={'/images/inicio/galeria/04-instalacion-tabiqueria-yeso-carton.jpeg'}
+                            alt="Instalación de tabiquería en yeso cartón"
+                            width={1000}
+                            height={800}
+                            className={`${galeria.square}`}
+                        />
+                        <Image
+                            src={'/images/inicio/galeria/05-soldadura-estructura-metalica-construccion.jpeg'}
+                            alt="Soldadura de estructura metálica"
+                            width={450}
+                            height={800}
+                            className={`${galeria.square}`}
+                        />
+                        <Image
+                            src={'/images/inicio/galeria/06-carpinteria-moldaje-construccion-cubierta.jpeg'}
+                            alt="Carpintería y moldaje de cubierta"
+                            width={800}
+                            height={450}
+                            className={`${galeria.mobile}`}
+                        />
+                        <Image
+                            src={'/images/inicio/galeria/07-trazado-replanteo-terreno-construccion.jpeg'}
+                            alt="Trazado y replanteo del terreno"
+                            width={450}
+                            height={800}
+                            className={`${galeria.square}`}
+                        />
+                    </div>
+
+                    <div className={galeria.thrid_row}>
+                        <Image
+                            src={'/images/inicio/galeria/08-limpieza-y-mantencion-de-superficies.jpeg'}
+                            alt="Limpieza y mantención de superficies"
+                            width={450}
+                            height={800}
+                        />
+                        <Image
+                            src={'/images/inicio/galeria/09-excavacion-maquinaria.jpeg'}
+                            alt="Excavación con maquinaria"
+                            width={450}
+                            height={800}
+                            className={`${galeria.mobile} ${galeria.rectangle}`}
+                        />
+                        <Image
+                            src={'/images/inicio/galeria/10-retiro-y-transporte-de-escombros.jpeg'}
+                            alt="Retiro y transporte de escombros"
+                            width={800}
+                            height={450}
+                        />
+                    </div>
                 </div>
 
-                <div className={galeriaStyles.second_row}>
-                    <Image
-                        src={'/images/inicio/galeria/04-instalacion-tabiqueria-yeso-carton.jpeg'}
-                        alt="04 instalacion tabiqueria yeso carton"
-                        width={1000}
-                        height={800}
-                        className={`${galeriaStyles.square}`}
-                        style={{ flexGrow: 1 }}
-                    />
-                    <Image
-                        src={'/images/inicio/galeria/05-soldadura-estructura-metalica-construccion.jpeg'}
-                        alt="05 soldadura estructura metalica construccion"
-                        width={450}
-                        height={800}
-                        className={`${galeriaStyles.square}`}
-                        style={{ flexGrow: 1 }}
-                    />
-                    <Image
-                        src={'/images/inicio/galeria/06-carpinteria-moldaje-construccion-cubierta.jpeg'}
-                        alt="06 carpinteria moldaje construccion cubierta"
-                        width={800}
-                        height={450}
-                        style={{ flexGrow: 800 / 450 }}
-                    />
-                    <Image
-                        src={'/images/inicio/galeria/07-trazado-replanteo-terreno-construccion.jpeg'}
-                        alt="07 trazado replanteo terreno construccion"
-                        width={450}
-                        height={800}
-                        className={`${galeriaStyles.square}`}
-                        style={{ flexGrow: 1 }}
-                    />
-                </div>
-
-                <div className={galeriaStyles.thrid_row}>
-                    <Image
-                        src={'/images/inicio/galeria/08-limpieza-y-mantencion-de-superficies.jpeg'}
-                        alt="08 limpieza y mantencion de superficies"
-                        width={450}
-                        height={800}
-                    />
-                    <Image
-                        src={'/images/inicio/galeria/09-excavacion-maquinaria.jpeg'}
-                        alt="09 excavacion maquinaria"
-                        width={450}
-                        height={800}
-                        className={`${galeriaStyles.square}`}
-                    />
-                    <Image
-                        src={'/images/inicio/galeria/10-retiro-y-transporte-de-escombros.jpeg'}
-                        alt="10 retiro y transporte de escombros"
-                        width={800}
-                        height={450}
-                    />
-                </div>
-            </div> */}
+                <Link
+                    href={'/galeria'}
+                    className={moreBtnStyles.more}
+                >
+                    Revise más fotos aquí
+                </Link>
+            </div>
 
             {/* CONTACTO */}
-            <div className={contactoStyles.contacto}>
-                <Image
-                    src={'/images/inicio/contacto/instalacion-aislacion-termica-muros.jpeg'}
-                    alt="Instalación aislación termica muros"
-                    width={1600}
-                    height={900}
-                />
-                <div className={contactoStyles.overlay}></div>
-                <div className={contactoStyles.content}>
+            <div id="contacto" className={contacto.section}>
+                <div>
                     <p className="subtitle">¿Tiene un proyecto en mente?</p>
                     <h2>contáctenos</h2>
                     <p>Escríbanos a nuestros WhatsApp y reciba una cotización rápida y sin compromiso</p>

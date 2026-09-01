@@ -2,7 +2,10 @@
 const nextConfig = {
   /* config options here */
   reactCompiler: true,
-  allowedDevOrigins: ['192.168.1.123'],
+  allowedDevOrigins: [
+    'sly-slit-election.ngrok-free.dev',
+    '192.168.1.123'
+  ],
 };
 
 export default nextConfig;

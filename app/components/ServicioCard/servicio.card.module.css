@@ -1,14 +1,15 @@
 .card {
     background-color: var(--primary-color);
     color: #fff;
-    width: 80vw;
-    height: 15rem;
+    width: 85vw;
     border-radius: 10px;
     padding: 1.5rem;
     position: relative;
     display: flex;
     align-items: center;
     overflow: hidden;
+    min-height: 230px;
+    height: 30vh;
 }
 
 .portada {
@@ -21,7 +22,7 @@
 }
 
 .portada h3 {
-    font-size: 1.8rem;
+    font-size: 7.5vw;
     line-height: 1.1;
 }
 
@@ -67,7 +68,7 @@
 }
 
 .button span {
-    font-size: 1.2rem;
+    font-size: 4.5vw;
 }
 
 .button button {
@@ -78,6 +79,11 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
+}
+
+.button button:hover,
+.button button:active {
+    background-color: var(--secundary-color);
 }
 
 .button :global(.icons) {
@@ -99,12 +105,46 @@
 
 @media (min-width: 576px) {
     .card {
-        width: 350px;
+        width: 45vw;
+        padding: 1.25rem;
+        height: 10rem;
+    }
+
+    .portada h3 {
+        font-size: 1.8rem;
+    }
+
+    .button span {
+        font-size: 1.1rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .card {
+        width: 40vw;
+        padding: 1.5rem;
+        height: 15rem;
+    }
+
+    .portada h3 {
+        font-size: 1.9rem;
+    }
+
+    .button span {
+        font-size: 1.2rem;
     }
 }
 
 @media (min-width: 1280px) {
     .card {
-        width: 300px;
+        width: 22vw;
+    }
+
+    .portada h3 {
+        font-size: 2rem;
+    }
+
+    .button span {
+        font-size: clamp(1.2rem, 1.3vw, 1.4rem);
     }
 }

@@ -14,6 +14,7 @@
 .info {
     display: grid;
     margin-block: 2rem;
+    margin-inline: 1.3rem;
 }
 
 .info div {
@@ -45,6 +46,11 @@
     font-size: 1.1rem;
 }
 
+.info a:hover,
+.info a:active {
+    text-decoration: underline;
+}
+
 @media (min-width: 576px) {
 
     .logo {
@@ -74,7 +80,6 @@
 
     .credits {
         text-align: start;
-        margin-top: -1.2rem;
     }
 
     .content,
@@ -90,11 +95,17 @@
         padding-inline: 4rem;
     }
 
-    .logo {
-        width: 15%;
+    .info p,
+    .info a,
+    .credits {
+        font-size: 1.2rem;
     }
 
-    .credits {
-        margin-top: -2rem;
+    .info div img {
+        height: 1.3rem;
+    }
+
+    .logo {
+        width: clamp(15%, 30vh, 18%);
     }
 }

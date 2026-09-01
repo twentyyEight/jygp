@@ -1,5 +1,5 @@
 "use client"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./navbar.module.css"
@@ -7,6 +7,18 @@ import styles from "./navbar.module.css"
 export default function Navbar() {
 
     const [isOpen, setIsOpen] = useState(false);
+
+    useEffect(() => {
+        document.body.classList.toggle('overflow-hidden', isOpen)
+
+        return () => document.body.classList.remove('overflow-hidden')
+    }, [isOpen])
+
+    const cerrarMenu = () => {
+        setTimeout(() => {
+            setIsOpen(false)
+        }, 300)
+    }
 
     return (
         <nav className={styles.nav}>
@@ -51,19 +63,19 @@ export default function Navbar() {
                     />
                 </button>
                 <ul>
-                    <li>
+                    <li onClick={cerrarMenu}>
                         <Link href="/">INICIO</Link>
                     </li>
-                    <li>
+                    <li onClick={cerrarMenu}>
                         <Link href="/#nosotros">NOSOTROS</Link>
                     </li>
-                    <li>
+                    <li onClick={cerrarMenu}>
                         <Link href="/servicios">SERVICIOS</Link>
                     </li>
-                    <li>
+                    <li onClick={cerrarMenu}>
                         <Link href="/galeria">GALERÍA</Link>
                     </li>
-                    <li>
+                    <li onClick={cerrarMenu}>
                         <Link href="/#contacto">CONTACTO</Link>
                     </li>
                 </ul>
