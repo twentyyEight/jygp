@@ -1,0 +1,25 @@
+.galeria h2 {
+    margin: 0;
+    margin-bottom: 0.25rem;
+    font-size: 2rem;
+    text-align: left;
+}
+
+.galeria button {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+}
+
+.galeria img {
+    border-radius: 5px;
+    width: 100%;
+    height: auto;
+}
+
+@media (min-width: 1280px) {
+
+    .cafeteria {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+    }
+}

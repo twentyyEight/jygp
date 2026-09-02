@@ -1,0 +1,93 @@
+.header {
+    background-image: url('/images/Banner.png');
+    height: 100%;
+    aspect-ratio: 4/3;
+    background-position: 15% 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    position: relative;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    margin-inline: 0.5rem;
+}
+
+.header::after {
+    content: '';
+    background-color: #000;
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    opacity: 0.6;
+}
+
+.header div:last-of-type {
+    position: absolute;
+}
+
+.header div:last-of-type {
+    z-index: 2;
+}
+
+.header h1 {
+    font-size: 3rem;
+    text-align: center;
+}
+
+.header p {
+    width: 85%;
+    margin-inline: auto;
+    font-size: 1.1rem;
+}
+
+.header,
+.header div {
+    border-radius: 10px;
+}
+
+@media (min-width: 576px) {
+    .header {
+        aspect-ratio: 4/2.5;
+        background-position: 15% 95%;
+        margin-inline: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .header h1 {
+        font-size: 3.5rem;
+    }
+
+    .header p {
+        font-size: 1.3rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .header {
+        aspect-ratio: 16/6;
+    }
+
+    .header h1 {
+        font-size: 4rem;
+    }
+
+    .header p {
+        width: 60%;
+        font-size: 1.3rem;
+    }
+}
+
+@media (min-width: 1280px) {
+
+    .header {
+        aspect-ratio: 5/1;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .header p {
+        width: 60%;
+        font-size: 1.4rem;
+    }
+}

@@ -1,0 +1,26 @@
+.cards {
+    background-color: #F3F3F3;
+    padding-block: 2rem;
+    display: grid;
+    place-items: center;
+    gap: 1.5rem;
+    margin-inline: 0.5rem;
+    border-radius: 10px;
+}
+
+@media (min-width: 768px) {
+
+    .cards {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: center;
+    }
+}
+
+@media (min-width: 1280px) {
+    
+    .cards {
+        margin-inline: 1rem;
+    }
+}
