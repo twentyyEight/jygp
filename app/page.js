@@ -9,6 +9,7 @@ import servicios from "./styles/home/servicios.module.css"
 import galeria from "./styles/home/galeria.module.css"
 import contacto from "./styles/home/contacto.module.css"
 import moreBtnStyles from "./styles/home/more.btn.module.css"
+import titles from "./styles/home/titles.module.css"
 
 import ServicioCard from "./components/ServicioCard/ServicioCard";
 import services from '@/app/data/servicios.json'
@@ -59,8 +60,10 @@ export default function Home() {
             <div id="nosotros" className={nosotros.section}>
 
                 <div className={nosotros.text}>
-                    <p className="subtitle">Sobre nosotros</p>
-                    <h2>desde 2021 construyendo confianza y calidad</h2>
+                    <div className={titles.section}>
+                        <p className="subtitle">Sobre nosotros</p>
+                        <h2>desde 2021 construyendo confianza y calidad</h2>
+                    </div>
                     <p>JYGP Construcciones es una empresa dedicada a ofrecer soluciones integrales en el rubro de la construcción. Hemos tenido el privilegio de trabajar junto a clientes que han confiado en nosotros, permitiéndonos brindar soluciones eficaces, cumplimiento de plazos y optimización de costos en cada obra. Contamos con experiencia en una amplia gama de servicios respaldados por el compromiso y la dirección de Juan Tapia Levillan, Constructor Civil.</p>
                 </div>
 
@@ -91,12 +94,15 @@ export default function Home() {
 
             {/* SERVICIOS */}
             <div className={servicios.section}>
-                <p className="subtitle">Nuestros servicios</p>
-                <h2>todo lo que necesita, en un solo lugar</h2>
+
+                <div className={titles.section}>
+                    <p className="subtitle">Nuestros servicios</p>
+                    <h2>todo lo que necesita, en un solo lugar</h2>
+                </div>
 
                 <div className={servicios.cards}>
                     {services
-                        .filter((service, index) => [2,3,8,9].includes(index))
+                        .filter((service, index) => [2, 3, 8, 9].includes(index))
                         .map((service, index) => (
                             <ServicioCard
                                 key={index}
@@ -118,10 +124,12 @@ export default function Home() {
             {/* GALERIA */}
             <div className={galeria.section}>
 
-                <p className="subtitle">Galería de fotos</p>
-                <h2>un vistazo a nuestro trabajo en terreno</h2>
+                <div className={titles.section}>
+                    <p className="subtitle">Galería de fotos</p>
+                    <h2>un vistazo a nuestro trabajo en terreno</h2>
+                </div>
 
-                <div>
+                <div className={galeria.photos}>
                     <div className={galeria.first_row}>
                         <Image
                             src={'/images/inicio/galeria/01-instalacion-faena-obra-construccion.jpeg'}

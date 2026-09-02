@@ -28,6 +28,10 @@
     width: 100%;
 }
 
+.section div p:global(.subtitle) {
+    font-weight: 400;
+}
+
 .section h2 {
     font-size: 13vw;
     margin-bottom: 0.5rem;
@@ -108,6 +112,10 @@
 
 @media (min-width: 992px) {
 
+    .section {
+        width: calc(100vw - 3.5rem);
+    }
+
     .section p:last-of-type {
         width: 60%;
         margin-inline: auto;
@@ -117,8 +125,9 @@
 @media (min-width: 1280px) {
 
     .section {
-        aspect-ratio: 16/5;
+        aspect-ratio: 16/5.5;
         background-size: cover;
+        width: calc(100vw - 5rem);
     }
 
     .section h2 {

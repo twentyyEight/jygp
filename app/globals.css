@@ -33,15 +33,6 @@ h2 {
     text-transform: uppercase;
 }
 
-h2,
-.subtitle {
-    text-align: center;
-}
-
-.subtitle {
-    font-weight: 600;
-}
-
 ul {
     list-style: none;
 }
