@@ -2,11 +2,15 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter, usePathname } from 'next/navigation'
 import styles from "./navbar.module.css"
 
 export default function Navbar() {
 
     const [isOpen, setIsOpen] = useState(false);
+
+    const router = useRouter();
+    const pathname = usePathname()
 
     useEffect(() => {
         document.body.classList.toggle('overflow-hidden', isOpen)
@@ -20,16 +24,27 @@ export default function Navbar() {
         }, 300)
     }
 
+    const goToSection = (id) => {
+        if (pathname === '/') {
+            document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+        } else {
+            sessionStorage.setItem('scrollTarget', id)
+            router.push('/')
+        }
+    }
+
     return (
         <nav className={styles.nav}>
-            <Image
-                src={'/images/jypg-constructora-logo.png'}
-                alt="JYGP Constructora logo"
-                width={2000}
-                height={664}
-                className={styles.logo}
-                loading="eager"
-            />
+            <Link href={'/'}>
+                <Image
+                    src={'/images/jypg-constructora-logo.png'}
+                    alt="JYGP Constructora logo"
+                    width={2000}
+                    height={664}
+                    className={styles.logo}
+                    loading="eager"
+                />
+            </Link>
 
             <button
                 type="button"
@@ -66,8 +81,11 @@ export default function Navbar() {
                     <li onClick={cerrarMenu}>
                         <Link href="/">INICIO</Link>
                     </li>
-                    <li onClick={cerrarMenu}>
-                        <Link href="/#nosotros">NOSOTROS</Link>
+                    <li onClick={() => {
+                        cerrarMenu()
+                        goToSection('nosotros')
+                    }}>
+                        NOSOTROS
                     </li>
                     <li onClick={cerrarMenu}>
                         <Link href="/servicios">SERVICIOS</Link>
@@ -75,8 +93,11 @@ export default function Navbar() {
                     <li onClick={cerrarMenu}>
                         <Link href="/galeria">GALERÍA</Link>
                     </li>
-                    <li onClick={cerrarMenu}>
-                        <Link href="/#contacto">CONTACTO</Link>
+                    <li onClick={() => {
+                        cerrarMenu()
+                        goToSection('contacto')
+                    }}>
+                        CONTACTO
                     </li>
                 </ul>
                 <Image
@@ -93,8 +114,8 @@ export default function Navbar() {
                 <li>
                     <Link href="/">INICIO</Link>
                 </li>
-                <li>
-                    <Link href="/#nosotros">NOSOTROS</Link>
+                <li onClick={() => goToSection('nosotros')}>
+                    NOSOTROS
                 </li>
                 <li>
                     <Link href="/servicios">SERVICIOS</Link>
@@ -102,8 +123,8 @@ export default function Navbar() {
                 <li>
                     <Link href="/galeria">GALERÍA</Link>
                 </li>
-                <li>
-                    <Link href="/#contacto">CONTACTO</Link>
+                <li onClick={() =>  goToSection('contacto')}>
+                    CONTACTO
                 </li>
             </ul>
         </nav>

@@ -16,26 +16,21 @@ import services from '@/app/data/servicios.json'
 
 export default function Home() {
 
-    const imgsRef = useRef(null)
+    const squareImgRef = useRef(null)
+    const rectangleImgRef = useRef(null)
 
     useEffect(() => {
         function updateSizes() {
 
-            if (imgsRef.current) {
-                const imagenes = imgsRef.current.querySelectorAll('img')
-                const primera = imagenes[0]
-                const segunda = imagenes[1]
+            if (squareImgRef.current && rectangleImgRef.current) {
 
-                if (primera && segunda) {
-                    const top = primera.getBoundingClientRect().top
-                    const bottom = segunda.getBoundingClientRect().bottom
-                    const altura = bottom - top
+                const top = squareImgRef.current.getBoundingClientRect().top
+                const bottom = rectangleImgRef.current.getBoundingClientRect().bottom
+                const altura = bottom - top
+                document.documentElement.style.setProperty('--height-imgs', `${altura}px`)
 
-                    const primera_width = segunda.getBoundingClientRect().width
-
-                    document.documentElement.style.setProperty('--height-imgs', `${altura}px`)
-                    document.documentElement.style.setProperty('--width-img_square', `${primera_width}px`)
-                }
+                const square_width = squareImgRef.current.getBoundingClientRect().width
+                document.documentElement.style.setProperty('--width-img_square', `${square_width}px`)
             }
         }
 
@@ -43,6 +38,18 @@ export default function Home() {
 
         window.addEventListener('resize', updateSizes)
         return () => window.removeEventListener('resize', updateSizes)
+    }, [])
+
+    useEffect(() => {
+        const target = sessionStorage.getItem('scrollTarget')
+
+        if (target) {
+            const el = document.getElementById(target)
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth' })
+            }
+            sessionStorage.removeItem('scrollTarget') // se borra para no repetirse en próximas visitas
+        }
     }, [])
 
     return (
@@ -73,13 +80,14 @@ export default function Home() {
                         <p>+100</p>
                         <p>proyectos <br /> completados</p>
                     </div>
-                    <div className={nosotros.imgs} ref={imgsRef}>
+                    <div className={nosotros.imgs}>
                         <Image
                             src={'/images/inicio/nosotros/reparacion-de-techumbre-trabajador-construccion.jpeg'}
                             alt="Trabajador reparando una techumbre"
                             width={900}
                             height={1600}
                             className={nosotros.img_square}
+                            ref={squareImgRef}
                         />
                         <Image
                             src={'/images/inicio/nosotros/armado-acero-refuerzo-construccion.jpeg'}
@@ -87,6 +95,7 @@ export default function Home() {
                             width={720}
                             height={1280}
                             className={nosotros.img_rectangle}
+                            ref={rectangleImgRef}
                         />
                     </div>
                 </div>

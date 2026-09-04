@@ -1,0 +1,35 @@
+@media (min-width: 576px) {
+
+    .section {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+    }
+
+    .section img {
+        aspect-ratio: 3/4;
+    }
+}
+
+@media (min-width: 768px) {
+
+    .section img {
+        aspect-ratio: 2/1;
+        object-position: 50% 40%;
+    }
+
+    .section .position {
+        object-position: 50% 25%;
+    }
+}
+
+@media (min-width: 1280px) {
+
+    .section img {
+        aspect-ratio: 1/1;
+    }
+
+    .section {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
