@@ -39,8 +39,8 @@ export default function Navbar() {
                 <Image
                     src={'/images/jypg-constructora-logo.png'}
                     alt="JYGP Constructora logo"
-                    width={2000}
-                    height={664}
+                    width={120}
+                    height={40}
                     className={styles.logo}
                     loading="eager"
                 />
@@ -55,8 +55,8 @@ export default function Navbar() {
                 <Image
                     src="/icons/menu.svg"
                     alt="menu"
-                    width={800}
-                    height={800}
+                    width={40}
+                    height={40}
                     className={styles.menu}
                 />
             </button>

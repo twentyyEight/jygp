@@ -24,6 +24,15 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${mulish.variable} ${reddit.variable}`}>
 
+      <head>
+        <link
+          rel="preload"
+          as="image"
+          href="/images/Banner.avif"
+          fetchPriority="high"
+        />
+      </head>
+
       <body>
         <Navbar />
 

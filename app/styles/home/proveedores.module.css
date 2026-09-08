@@ -1,0 +1,36 @@
+.logos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2.5rem;
+    gap: 2rem;
+}
+
+@media (min-width: 576px) {
+    
+    .logos {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 3rem;
+    }
+}
+
+@media (min-width: 768px) {
+    
+    .logos {
+        margin-inline: 1.5rem;
+    }
+}
+
+@media (min-width: 992px) {
+    
+    .logos {
+        margin-top: 4rem;
+    }
+
+    .logos img {
+        width: 15vw;
+        height: fit-content;
+    }
+}

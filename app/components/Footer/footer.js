@@ -9,8 +9,8 @@ export default function Footer() {
                 <Image
                     src={'/images/jypg-constructora-logo-blanco.png'}
                     alt='JYGP Constructora logo'
-                    width={2000}
-                    height={664}
+                    width={500}
+                    height={166}
                     className={styles.logo}
                 />
 

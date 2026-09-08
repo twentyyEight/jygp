@@ -2,22 +2,16 @@
 
     .section {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         gap: 0.5rem;
     }
 
-    .section img:last-child {
-        grid-column: 1 / -1;
-        aspect-ratio: 16 / 7;
-        object-position: top;
+    .section img {
+        aspect-ratio: 1/1;
     }
 }
 
 @media (min-width: 1280px) {
-
-    .section {
-        grid-template-columns: repeat(3, 1fr);
-    }
 
     .section img:last-child {
         grid-column: initial;
